@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解答之卡 抽牌工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: auto; }
+        .card { border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px; }
+        .btn { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>解答之卡 抽牌工具</h2>
+        <p>請輸入您的生日與名字，隨機抽取三張牌卡。</p>
+        <label>姓名：</label> <input type="text" id="name" placeholder="輸入您的名字">
+        <label>生日：</label> <input type="date" id="birthdate">
+        <button class="btn" onclick="drawCards()">抽牌</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const cards = [
+            { id: 1, title: "突破限制", text: "勇敢邁出一步，超越自己的界限。" },
+            { id: 2, title: "內心平衡", text: "找到你的核心價值，讓內心穩定。" },
+            { id: 3, title: "人際連結", text: "與周圍的人建立更深層的關係。" },
+            { id: 4, title: "未來可能", text: "未來的路未必清晰，但行動才是關鍵。" },
+            { id: 5, title: "選擇與行動", text: "每個選擇都帶來不同的機會，勇敢決定。" },
+            { id: 6, title: "直覺指引", text: "你的直覺比你想像得更準確。" }
+        ];
+
+        function drawCards() {
+            let name = document.getElementById("name").value;
+            let birthdate = document.getElementById("birthdate").value;
+            let resultDiv = document.getElementById("result");
+            
+            if (!name || !birthdate) {
+                resultDiv.innerHTML = "請輸入姓名與生日！";
+                return;
+            }
+            
+            let selectedCards = [];
+            while (selectedCards.length < 3) {
+                let randomCard = cards[Math.floor(Math.random() * cards.length)];
+                if (!selectedCards.includes(randomCard)) {
+                    selectedCards.push(randomCard);
+                }
+            }
+            
+            resultDiv.innerHTML = `
+                <h3>您的抽牌結果：</h3>
+                <div class="card"><strong>過去：</strong> ${selectedCards[0].title} - ${selectedCards[0].text}</div>
+                <div class="card"><strong>現在：</strong> ${selectedCards[1].title} - ${selectedCards[1].text}</div>
+                <div class="card"><strong>未來：</strong> ${selectedCards[2].title} - ${selectedCards[2].text}</div>
+            `;
+        }
+    </script>
+</body>
+</html>
