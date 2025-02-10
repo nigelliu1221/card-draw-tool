@@ -8,18 +8,24 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; text-align: center; background-color: #f8f8f8; color: #333; padding: 20px; }
         .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
         h2 { font-weight: 600; }
-        .card { border: 1px solid #ddd; padding: 15px; margin: 10px; border-radius: 10px; background: #fafafa; }
+        .card { width: 7cm; height: 12cm; border-radius: 5mm; background: #fff; padding: 20px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; justify-content: space-between; }
+        .card-title { font-weight: bold; font-size: 20px; margin-bottom: 10px; font-family: "Helvetica Neue", sans-serif; }
+        .card-text { font-size: 16px; text-align: center; }
+        .card-hint { font-size: 14px; font-style: italic; color: #555; margin-top: 10px; }
         .btn { display: block; width: 100%; padding: 12px; font-size: 16px; font-weight: 600; cursor: pointer; background-color: #007aff; color: white; border: none; border-radius: 8px; margin-top: 15px; }
         .btn:hover { background-color: #005ecb; }
-        .instruction { font-size: 16px; margin-bottom: 10px; }
         .share-btn { background-color: #1877F2; color: white; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>明想解答之卡</h2>
-        <p class="instruction">請在心中默念你的問題，然後點擊按鈕抽取一張指引牌。</p>
-        <button class="btn" onclick="drawCard()">抽取指引牌</button>
+        <label>輸入你的名字：</label>
+        <input type="text" id="name" placeholder="請輸入你的名字"><br>
+        <label>輸入你的生日：</label>
+        <input type="date" id="birthdate"><br>
+        <p>請在心中默念你的問題，然後點擊按鈕抽取一張指引牌。</p>
+        <button class="btn" onclick="drawCard()">默念你的疑問並抽出解答</button>
         <div id="result"></div>
     </div>
 
@@ -29,35 +35,42 @@
             { id: 2, title: "內心平衡", text: "找到你的核心價值，讓內心穩定。" },
             { id: 3, title: "人際連結", text: "與周圍的人建立更深層的關係。" },
             { id: 4, title: "未來可能", text: "未來的路未必清晰，但行動才是關鍵。" },
-            { id: 5, title: "選擇與行動", text: "每個選擇都帶來不同的機會，勇敢決定。" },
-            { id: 6, title: "直覺指引", text: "你的直覺比你想像得更準確。" },
-            { id: 7, title: "改變習慣", text: "微小的改變，能帶來巨大的影響。" },
-            { id: 8, title: "釋放壓力", text: "學會放手，才能迎接新的可能性。" },
-            { id: 9, title: "專注當下", text: "不要讓過去或未來奪走你當下的快樂。" },
-            { id: 10, title: "接受未知", text: "未知並不可怕，學會擁抱變化。" },
-            { id: 11, title: "勇敢表達", text: "你的聲音值得被聽見，勇敢說出你的想法。" },
-            { id: 12, title: "迎接挑戰", text: "挑戰是成長的開始，不要害怕困難。" },
-            { id: 13, title: "信任過程", text: "即使現在不明朗，一切都在逐漸發展。" },
-            { id: 14, title: "內在智慧", text: "你比自己想像的更有智慧，相信你的選擇。" },
-            { id: 15, title: "築夢踏實", text: "願景需要行動去實現，一步步來。" },
-            { id: 16, title: "情感平衡", text: "感受你的情緒，學會與它們共處。" },
-            { id: 17, title: "誠實對待自己", text: "誠實是改變的第一步，勇敢面對真相。" },
-            { id: 18, title: "開放心態", text: "當你放下成見，更多可能性會展現。" },
-            { id: 19, title: "信任時間", text: "一切發生皆有時機，相信生命的節奏。" },
-            { id: 20, title: "改變視角", text: "換個角度看問題，你會發現不同的可能性。" }
+            { id: 5, title: "選擇與行動", text: "每個選擇都帶來不同的機會，勇敢決定。" }
+        ];
+        
+        const hints = [
+            "答案可能近在眼前，也可能需要時間顯現。",
+            "有時候，等待本身也是一種行動。",
+            "你已經知道答案，只是需要更多確認。",
+            "有些事不急於解決，讓它自然發展。",
+            "方向清晰，但步伐需要你自己決定。",
+            "你可能需要更多資訊來做出決定。",
+            "行動之前，先傾聽內心的聲音。",
+            "偶然的選擇，可能是最好的答案。",
+            "現在是觀察的時刻，而不是行動的時刻。",
+            "相信自己的直覺，它比你想的更準確。"
         ];
 
-        for (let i = 21; i <= 60; i++) {
-            cards.push({ id: i, title: `指引 ${i}`, text: `這是指引卡 ${i} 的內容。` });
-        }
-
         function drawCard() {
+            let name = document.getElementById("name").value;
+            let birthdate = document.getElementById("birthdate").value;
             let resultDiv = document.getElementById("result");
+            
+            if (!name || !birthdate) {
+                resultDiv.innerHTML = "請輸入你的名字與生日！";
+                return;
+            }
+            
             let randomCard = cards[Math.floor(Math.random() * cards.length)];
+            let randomHint = hints[Math.floor(Math.random() * hints.length)];
             
             resultDiv.innerHTML = `
                 <h3>你的指引牌：</h3>
-                <div class="card"><strong>${randomCard.title}</strong> - ${randomCard.text}</div>
+                <div class="card">
+                    <div class="card-title">${randomCard.title}</div>
+                    <div class="card-text">${randomCard.text}</div>
+                    <div class="card-hint">${randomHint}</div>
+                </div>
                 <button class="btn share-btn" onclick="shareToFacebook('${randomCard.title}', '${randomCard.text}')">分享到 Facebook</button>
             `;
         }
