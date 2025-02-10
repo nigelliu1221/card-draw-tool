@@ -1,95 +1,90 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>明想解答之卡</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      text-align: center;
-      background-color: #f8f8f8;
-      color: #333;
-      padding: 20px;
-    }
-    .container {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      font-weight: 600;
-    }
-    .input-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-    label {
-      display: inline-block;
-      margin-bottom: 5px;
-    }
-    input[type="text"],
-    input[type="date"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    .card {
-      width: 7cm;
-      height: 12cm;
-      border-radius: 5mm;
-      background: #fff;
-      padding: 20px;
-      margin: 20px auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card-title {
-      font-weight: bold;
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-family: "Helvetica Neue", sans-serif;
-    }
-    .card-text {
-      font-size: 16px;
-      text-align: center;
-    }
-    .card-hint {
-      font-size: 14px;
-      font-style: italic;
-      color: #555;
-      margin-top: 10px;
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      background-color: #007aff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-    .btn:hover {
-      background-color: #005ecb;
-    }
-    .share-btn {
-      background-color: #1877F2;
-      color: white;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>明想解答之卡</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        text-align: center;
+        background-color: #f8f8f8;
+        color: #333;
+        padding: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        font-weight: 600;
+      }
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      label {
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      .card {
+        width: 7cm;
+        height: 12cm;
+        border-radius: 5mm;
+        background: #fff;
+        padding: 20px;
+        margin: 20px auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-family: "Helvetica Neue", sans-serif;
+      }
+      .card-text {
+        font-size: 16px;
+        text-align: center;
+      }
+      .card-hint {
+        font-size: 14px;
+        font-style: italic;
+        color: #555;
+        margin-top: 10px;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: #007aff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+      }
+      .btn:hover {
+        background-color: #005ecb;
+      }
+    </style>
 </head>
 <body>
   <div class="container">
@@ -109,68 +104,14 @@
 
   <script>
     // 建立 60 張牌卡
-    const cards = [
-      { id: 1,  title: "突破限制",  text: "勇敢邁出一步，超越自己的界限。" },
-      { id: 2,  title: "內心平衡",  text: "找到你的核心價值，讓內心穩定。" },
-      { id: 3,  title: "人際連結",  text: "與周圍的人建立更深層的關係。" },
-      { id: 4,  title: "未來可能",  text: "未來的路未必清晰，但行動才是關鍵。" },
-      { id: 5,  title: "選擇與行動", text: "每個選擇都帶來不同的機會，勇敢決定。" },
-      { id: 6,  title: "直覺指引",  text: "你的直覺比你想像得更準確。" },
-      { id: 7,  title: "改變習慣",  text: "微小的改變，能帶來巨大的影響。" },
-      { id: 8,  title: "釋放壓力",  text: "學會放手，才能迎接新的可能性。" },
-      { id: 9,  title: "專注當下",  text: "不要讓過去或未來奪走你當下的快樂。" },
-      { id: 10, title: "接受未知",  text: "未知並不可怕，學會擁抱變化。" },
-      { id: 11, title: "勇敢表達",  text: "你的聲音值得被聽見，勇敢說出你的想法。" },
-      { id: 12, title: "迎接挑戰",  text: "挑戰是成長的開始，不要害怕困難。" },
-      { id: 13, title: "信任過程",  text: "即使現在不明朗，一切都在逐漸發展。" },
-      { id: 14, title: "內在智慧",  text: "你比自己想像的更有智慧，相信你的選擇。" },
-      { id: 15, title: "築夢踏實",  text: "願景需要行動去實現，一步步來。" },
-      { id: 16, title: "情感平衡",  text: "感受你的情緒，學會與它們共處。" },
-      { id: 17, title: "誠實對待自己", text: "誠實是改變的第一步，勇敢面對真相。" },
-      { id: 18, title: "開放心態",  text: "當你放下成見，更多可能性會展現。" },
-      { id: 19, title: "信任時間",  text: "一切發生皆有時機，相信生命的節奏。" },
-      { id: 20, title: "改變視角",  text: "換個角度看問題，你會發現不同的可能性。" },
-      { id: 21, title: "掌握節奏",  text: "不要跟隨別人的步調，找到自己的步伐。" },
-      { id: 22, title: "學習接納",  text: "接納不完美，才能更輕鬆前行。" },
-      { id: 23, title: "情感釋放",  text: "允許自己表達情緒，才能真正放鬆。" },
-      { id: 24, title: "珍視關係",  text: "關係需要用心經營，付出與回饋相輔相成。" },
-      { id: 25, title: "自信建立",  text: "專注於自己的優點，發揮潛能。" },
-      { id: 26, title: "感恩心態",  text: "保持感恩之心，能讓一切更美好。" },
-      { id: 27, title: "智慧學習",  text: "從每個錯誤中汲取養分，化為下一次成功的基石。" },
-      { id: 28, title: "面對轉變",  text: "轉變並不可怕，它是成長的開始。" },
-      { id: 29, title: "守護初心",  text: "不要忘記當初的熱情與初衷。" },
-      { id: 30, title: "機會之門",  text: "把握機會，才有可能開啟新的旅程。" },
-      { id: 31, title: "合作力量",  text: "與他人合作能讓目標更快達成。" },
-      { id: 32, title: "傾聽內心",  text: "真實的想法往往在第一直覺時浮現。" },
-      { id: 33, title: "轉危為安",  text: "你所擔心的，可能不如想像中可怕。" },
-      { id: 34, title: "維持彈性",  text: "在堅持目標的同時，也要能隨機應變。" },
-      { id: 35, title: "改變現狀",  text: "如果不滿意現況，那就行動去改變。" },
-      { id: 36, title: "勇氣積累",  text: "每一次嘗試，都是為下次更大突破做準備。" },
-      { id: 37, title: "拓展格局",  text: "跳脫熟悉圈，視野將更廣闊。" },
-      { id: 38, title: "突破習慣",  text: "打破舊習，才能嘗試新的可能性。" },
-      { id: 39, title: "內外平衡",  text: "找到外在行動與內在沉澱間的和諧。" },
-      { id: 40, title: "把握此刻",  text: "當下的選擇，決定未來的方向。" },
-      { id: 41, title: "充實自我",  text: "學習與成長是人生長期的投資。" },
-      { id: 42, title: "共情他人",  text: "站在別人立場想問題，關係更親密。" },
-      { id: 43, title: "先完成再完美", text: "沒有行動，就無法調整與修正。" },
-      { id: 44, title: "面對傷口",  text: "唯有正視，才能真正癒合。" },
-      { id: 45, title: "迴旋餘地",  text: "在做決定時，預留空間以防萬一。" },
-      { id: 46, title: "堅持初心",  text: "別人的想法，不能左右你的價值。" },
-      { id: 47, title: "情緒釋懷",  text: "允許自己脆弱，擁抱真實的情感。" },
-      { id: 48, title: "為自己負責", text: "沒有誰能替你的人生做主，唯有自己。" },
-      { id: 49, title: "目標聚焦",  text: "明確目標，才能集中資源發揮效率。" },
-      { id: 50, title: "暫停思考",  text: "當一切混亂時，不妨暫停，看看內心想法。" },
-      { id: 51, title: "嘗試新路",  text: "走不同的路，才能看見新的風景。" },
-      { id: 52, title: "簡化生活",  text: "減少不必要的負擔，才能輕裝前進。" },
-      { id: 53, title: "觀察週遭",  text: "外在環境給你的暗示，往往蘊藏轉機。" },
-      { id: 54, title: "適時放下",  text: "學習捨棄，才能騰出空間迎接新事物。" },
-      { id: 55, title: "拒絕拖延",  text: "及時行動，比完美計畫更重要。" },
-      { id: 56, title: "適度冒險",  text: "安全區之外，才有更寬廣的世界。" },
-      { id: 57, title: "共鳴互動",  text: "真誠的交流，會讓關係產生共鳴。" },
-      { id: 58, title: "情緒覺察",  text: "不要忽略微小的情緒，它是你狀態的提醒。" },
-      { id: 59, title: "確立信念",  text: "只要堅信，你就能比想像中做得更多。" },
-      { id: 60, title: "迎接機會",  text: "機會常常在不經意時出現，要保持開放。"}
-    ];
+    const cards = [];
+    for (let i = 1; i <= 60; i++) {
+      cards.push({
+        id: i,
+        title: `指引 ${i}`,
+        text: `這是指引卡 ${i} 的內容。透過這張卡，或許你能發現成長與行動的契機。`
+      });
+    }
 
     // 30 條模稜兩可提示
     const hints = [
@@ -221,7 +162,6 @@
       // 從提示陣列中隨機抽取一條提示
       let randomHint = hints[Math.floor(Math.random() * hints.length)];
 
-      // 顯示結果
       resultDiv.innerHTML = `
         <h3>你的指引牌：</h3>
         <div class="card">
@@ -229,13 +169,7 @@
           <div class="card-text">${randomCard.text}</div>
           <div class="card-hint">${randomHint}</div>
         </div>
-        <button class="btn share-btn" onclick="shareToFacebook('${randomCard.title}', '${randomCard.text}')">分享到 Facebook</button>
       `;
-    }
-
-    function shareToFacebook(title, text) {
-      const url = `https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com&quote=${title} - ${text}`;
-      window.open(url, '_blank');
     }
   </script>
 </body>
